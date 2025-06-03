@@ -1,0 +1,96 @@
+meta charset="UTF-8"
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>야구장 파크팩터 탐험</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    header {
+      background: #00274d;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    main {
+      padding: 2em;
+    }
+    .stadium-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 1em;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    .result {
+      margin-top: 2em;
+      padding: 1em;
+      border-radius: 8px;
+      background: #e2f0d9;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏟️ 파크팩터 탐험 게임</h1>
+    <p>각 구장을 클릭해서 성향과 전략을 알아보세요!</p>
+  </header>
+  <main>
+    <section class="stadium-list">
+      <div class="card" onclick="showResult('대구 삼성 라이온즈 파크', '타자 친화', '짧은 외야 거리 + 순풍 + 고온기후')">
+        <h3>대구 삼성 라이온즈 파크</h3>
+        <p>홈런 파크팩터: 1.415</p>
+      </div>
+      <div class="card" onclick="showResult('잠실 야구장', '투수 친화', '넓은 외야 + 역풍 + 낮은 기온')">
+        <h3>잠실 야구장</h3>
+        <p>홈런 파크팩터: 0.805</p>
+      </div>
+      <div class="card" onclick="showResult('한화생명 이글스파크', '중립 / 전략형', '몬스터월 + 좌타자 억제')">
+        <h3>이글스파크</h3>
+        <p>득점 파크팩터: 1.099</p>
+      </div>
+      <div class="card" onclick="showResult('Great American Ball Park (MLB)', '타자 친화', '짧은 라인 + 고온기후')">
+        <h3>GABP (MLB)</h3>
+        <p>홈런 파크팩터: 1.28</p>
+      </div>
+      <div class="card" onclick="showResult('PNC Park (MLB)', '투수 친화', '비대칭 구조 + 강변 역풍')">
+        <h3>PNC Park (MLB)</h3>
+        <p>홈런 파크팩터: 0.79</p>
+      </div>
+    </section>
+    <div class="result" id="resultBox">
+      <h2 id="stadiumName"></h2>
+      <p><strong>성향:</strong> <span id="parkType"></span></p>
+      <p><strong>특징 요약:</strong> <span id="features"></span></p>
+    </div>
+  </main>
+  <script>
+    function showResult(name, type, features) {
+      document.getElementById('stadiumName').textContent = name;
+      document.getElementById('parkType').textContent = type;
+      document.getElementById('features').textContent = features;
+      document.getElementById('resultBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
